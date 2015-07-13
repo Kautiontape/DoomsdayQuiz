@@ -68,13 +68,16 @@ def promptGuess(dd, hints = 0):
 
 def playGame():
     dd = randomDate("1/1/1700", "12/31/2500", random.random())
-
     finished = False
     hints = 0
+
+    start = time.time()
     while(not finished):
         result = promptGuess(dd, hints)
         finished = result['result']
         hints = result['hints']
+    end = time.time()
+    print("You took %d seconds to solve" % (end - start))
 
 def main():
     while(True):
