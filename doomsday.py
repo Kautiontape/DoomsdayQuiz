@@ -61,7 +61,7 @@ def promptGuess(dd, hints = 0):
         result['result'] = True
         return result
     else:
-        print("Not a valid guess. Please enter a day of the week (or 'h' for Hint)")
+        print("Not a valid guess (or 'h' for hint)")
         return result
 
     return result
@@ -70,14 +70,17 @@ def playGame():
     dd = randomDate("1/1/1700", "12/31/2500", random.random())
     finished = False
     hints = 0
+    answers = 0
 
     start = time.time()
     while(not finished):
         result = promptGuess(dd, hints)
+        answers = answers + 1
         finished = result['result']
         hints = result['hints']
     end = time.time()
-    print("You took %d seconds to solve" % (end - start))
+    print("You took %d seconds and %d %s to solve" %
+            ((end - start), answers, "tries" if answers > 1 else "try"))
 
 def main():
     while(True):
