@@ -56,6 +56,8 @@ def promptGuess(dd, hints = 0):
             return result
 
         print("Correct!")
+        if hints > 0:
+            print("%d hints used" % hints)
         result['result'] = True
         return result
     else:
